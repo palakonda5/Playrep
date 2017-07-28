@@ -1,0 +1,22 @@
+---
+- hosts: all
+  user: root
+  tasks:
+  - name: creating redhat user
+    user:
+     name: redhatuser
+    when: ansible_os_family == "RedHat"
+  - name: install vsftp
+    package:
+      name: vsftpd
+    when: ansible_os_family == "RedHat"
+
+  - name: creating ubuntu user
+    user:
+     name: ubuntu-user
+    when: ansible_os_family == "Debian"
+  - name: install apache
+    package:
+      name: apache2
+    when: ansible_os_family == "Debian"
+

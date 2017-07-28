@@ -1,0 +1,10 @@
+---
+ - hosts : ip-172-31-14-245.ec2.internal 
+   user : root
+   vars:
+    motd_welcome: 'Welcome to Ansible tutorial'
+   tasks:
+    - name: sample motd
+      copy: 
+       dest: /etc/motd
+       content: "{{ motd_welcome }}"
